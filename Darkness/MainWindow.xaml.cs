@@ -24,5 +24,20 @@ namespace Darkness
         {
             InitializeComponent();
         }
+
+        private void Window_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_Maximize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = this.WindowState == WindowState.Normal ? WindowState.Maximized : WindowState.Normal;
+        }
+
+        private void Window_Minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

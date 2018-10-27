@@ -6,7 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Darkness
+using Darkness;
+
+
+namespace Fork
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -17,7 +20,7 @@ namespace Darkness
 
         public App()
         {
-            _darknessApplication = new DarknessApplication(() => new Darkness.UI.View.MainContent());
+            _darknessApplication = new DarknessApplication(() => new Fork.UI.View.MainContent());
         }
 
         private void Application_Startup(object sender, StartupEventArgs e)
@@ -29,7 +32,6 @@ namespace Darkness
         {
             _darknessApplication.Application_Exit(sender, e);
         }
-
 
     }
 }
