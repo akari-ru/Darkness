@@ -5,16 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Darkness.UI.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="500" d:DesignWidth="900">
+    <Grid Name="MainContentGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <DockPanel Name="WindowCaption" Grid.Row="0" Height="40">
             <Image Name="WindowCaptionIcon" DockPanel.Dock="Left" Width="40" Height="40" Source="/Darkness;component/Icons/freebsd_start_here_folder_icon.png" />
-            <Label Name="WindowTitle" DockPanel.Dock="Left" FontSize="27" Content="Darkness" />
+            <Label Name="WindowTitle" DockPanel.Dock="Left" FontSize="27" FontWeight="Heavy" Content="Darkness" />
         </DockPanel>
-        <local:ApplicationFrame x:Name="WindowContentFrame" Grid.Row="1" />
+        <!--<local:ApplicationFrame x:Name="WindowContentFrame" Grid.Row="1" DataContext="{Binding SessionViewModel}"/>-->
+        <!--<local:Workspace Grid.Row="1" />-->
     </Grid>
 </UserControl>

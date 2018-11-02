@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Darkness.UI.View
 {
     /// <summary>
-    /// Interaction logic for MainContent.xaml
+    /// Interaction logic for BlendWindow.xaml
     /// </summary>
-    public partial class MainContent : UserControl
+    public partial class BlendWindow : Window
     {
-        public MainContent()
+        public BlendWindow()
         {
             InitializeComponent();
-            InjectDefaultWorkspace();
-        }
-
-        private void InjectDefaultWorkspace()
-        {
-            var workspace = new Workspace(true);
-            Grid.SetRow(workspace, 1);
-            MainContentGrid.Children.Add(workspace);
         }
     }
 }

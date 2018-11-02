@@ -10,6 +10,7 @@ using Darkness.UI.ViewModel;
 
 namespace Darkness
 {
+    // Global aka Static Members
     public partial class DarknessApplication
     {
         private static DarknessApplication _app;  
@@ -30,6 +31,9 @@ namespace Darkness
         }
     }
 
+    /// <summary>
+    /// <see cref="DarknessApplication"/>: IOC Application defining a program instance.
+    /// </summary>
     public partial class DarknessApplication
     {
         #region Bindable Properties
@@ -72,7 +76,7 @@ namespace Darkness
         #region App Events
         public void Application_Startup(object sender, StartupEventArgs e)
         {
-            _mainWindow = new MainWindow();
+            _mainWindow = new MainWindow(); // new Darkness.UI.View.BlendWindow();
             _mainContent = _mainContent ?? (_fetchMainContent() ?? throw new Exception("No valid MainContent provided"));
             _mainWindow.DataContext = this;
             _mainWindow.Show();
@@ -80,7 +84,7 @@ namespace Darkness
 
         public void Application_Exit(object sender, ExitEventArgs e)
         {
-
+            // TODO: Eventually flush Session to file ..
         }
         #endregion
     }

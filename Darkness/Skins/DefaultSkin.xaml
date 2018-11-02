@@ -8,7 +8,7 @@
             <!-- * Window * -->
             <Style x:Key="WindowBorder" TargetType="Border">
                 <Setter Property="BorderThickness" Value="1" />
-                <Setter Property="BorderBrush" Value="Lime" />
+                <Setter Property="BorderBrush" Value="DarkGray" />
                 <Setter Property="Background" Value="{StaticResource WindowBackgroud}" />
                 <Style.Triggers>
                     <EventTrigger RoutedEvent="Mouse.MouseEnter">
@@ -21,14 +21,131 @@
             
             <!-- * Menu * -->
             <!-- Doesnt work so far :| -->
-            <DataTemplate DataType="MenuItem">
-                <Rectangle Height="20" Width="100" Fill="Aquamarine"/>
-            </DataTemplate>
             
             
             <!-- * Workspace * -->
             
             <!-- * Buttons * -->
+
+            <!-- Button -->
+            <ControlTemplate x:Key="Button_ControlTemplate" TargetType="Button">
+                <Border x:Name="RootElement">
+                    <VisualStateManager.VisualStateGroups>
+
+                        <!--Define the states and transitions for the common states.
+                            The states in the VisualStateGroup are mutually exclusive to
+                            each other.-->
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <!--The Normal state is the state the button is in
+                                when it is not in another state from this VisualStateGroup.-->
+                            <VisualState x:Name="Normal" />
+
+                            <!--Change the SolidColorBrush, BorderBrush, to red when the
+                                mouse is over the button.-->
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard>
+                                    <!-- Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="border" -->
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="{StaticResource Button_MouseOver_BorderBrush_Color}" />
+                                    <ColorAnimation Storyboard.TargetName="ContentGrid"
+                                                    Storyboard.TargetProperty="(Grid.Background).(SolidColorBrush.Color)"
+                                                    To="{StaticResource Button_MouseOver_Background_Color}" />
+                                </Storyboard>
+                            </VisualState>
+
+                            <!--Change the SolidColorBrush, BorderBrush, to Transparent when the
+                                button is pressed.-->
+                            <VisualState x:Name="Pressed">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush" 
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="{StaticResource Button_Pressed_BorderBrush_Color}"/>
+                                </Storyboard>
+                            </VisualState>
+
+                            <!--The Disabled state is omitted for brevity.-->
+                            <VisualState x:Name="Disabled">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush" 
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="Transparent"/>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <Border.Background>
+                        <SolidColorBrush x:Name="BorderBrush" Color="{StaticResource WindowCaptionButton_Normal_BorderBrush_Color}"/>
+                    </Border.Background>
+
+                    <Grid x:Name="ContentGrid" Background="{TemplateBinding Background}" Margin="1">
+                        <ContentPresenter 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Margin="4,5,4,4" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+
+            <!-- WindowCaptionButton -->
+            <ControlTemplate x:Key="WindowCaptionButton_ControlTemplate" TargetType="Button">
+                <Border x:Name="RootElement">
+                    <VisualStateManager.VisualStateGroups>
+
+                        <!--Define the states and transitions for the common states.
+                            The states in the VisualStateGroup are mutually exclusive to
+                            each other.-->
+                        <VisualStateGroup x:Name="CommonStates">
+
+                            <!--The Normal state is the state the button is in
+                                when it is not in another state from this VisualStateGroup.-->
+                            <VisualState x:Name="Normal" />
+
+                            <!--Change the SolidColorBrush, BorderBrush, to red when the
+                                mouse is over the button.-->
+                            <VisualState x:Name="MouseOver">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush"
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="{StaticResource WindowCaptionButton_MouseOver_BorderBrush_Color}" />
+                                </Storyboard>
+                            </VisualState>
+
+                            <!--Change the SolidColorBrush, BorderBrush, to Transparent when the
+                                button is pressed.-->
+                            <VisualState x:Name="Pressed">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush" 
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="{StaticResource WindowCaptionButton_Pressed_BorderBrush_Color}"/>
+                                </Storyboard>
+                            </VisualState>
+
+                            <!--The Disabled state is omitted for brevity.-->
+                            <VisualState x:Name="Disabled">
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetName="BorderBrush" 
+                                                    Storyboard.TargetProperty="Color"
+                                                    To="Transparent"/>
+                                </Storyboard>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <Border.Background>
+                        <SolidColorBrush x:Name="BorderBrush" Color="{StaticResource WindowCaptionButton_Normal_BorderBrush_Color}"/>
+                    </Border.Background>
+
+                    <Grid Background="{TemplateBinding Background}" Margin="1">
+                        <ContentPresenter 
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Margin="4,5,4,4" />
+                    </Grid>
+                </Border>
+            </ControlTemplate>
             
         </ResourceDictionary>
     </ResourceDictionary.MergedDictionaries>

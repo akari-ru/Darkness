@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Darkness" Height="500" Width="900"
         MinWidth="400" MinHeight="240"
-        WindowStyle="None">
+        WindowStyle="None" FontFamily="Segoe UI Light">
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="5" CaptionHeight="40" CornerRadius="0" GlassFrameThickness="0"  />
     </WindowChrome.WindowChrome>
@@ -24,10 +24,10 @@
     </Window.Resources>
     <Border Name="WindowBorder" Style="{StaticResource WindowBorder}">
         <Grid>
-            <DockPanel Name="WindowControls" Panel.ZIndex="99999" IsHitTestVisible="True" Height="40" VerticalAlignment="Top">
-                <Button Name="WindowCloseButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Width="20" Height="20" Margin="0, 4, 4, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="x" Click="Window_Close"/>
-                <Button Name="WindowMaximizeButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Width="20" Height="20" Margin="0, 4, 4, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="&#794;" Click="Window_Maximize"/>
-                <Button Name="WindowMinimizeButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Width="20" Height="20" Margin="0, 4, 4, 0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="_" Click="Window_Minimize"/>
+            <DockPanel Name="WindowControls" Panel.ZIndex="99999" IsHitTestVisible="True" Height="40" Margin="0, 0, 5, 0" VerticalAlignment="Top">
+                <Button Name="WindowCloseButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Template="{StaticResource WindowCaptionButton_ControlTemplate}" Width="25" Height="25" Margin="0, 0, 5, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="x" ToolTip="Close" Click="Window_Close"/>
+                <Button Name="WindowMaximizeButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Template="{StaticResource WindowCaptionButton_ControlTemplate}" Width="25" Height="25" Margin="0, 0, 5, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="&#794;" ToolTip="Restore Down" Click="Window_Maximize"/>
+                <Button Name="WindowMinimizeButton" DockPanel.Dock="Right" WindowChrome.IsHitTestVisibleInChrome="True" Template="{StaticResource WindowCaptionButton_ControlTemplate}" Width="25" Height="25" Margin="0, 0, 5, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="_" ToolTip="Minimize" Click="Window_Minimize"/>
             </DockPanel>
             <ContentControl Content="{Binding MainContent}" />
         </Grid>

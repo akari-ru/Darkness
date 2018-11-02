@@ -8,14 +8,19 @@ using Darkness.Model;
 
 namespace Darkness.UI.ViewModel
 {
-    public class SessionViewModel
+    public class SessionViewModel : ViewModel
     {
         #region Field
         Session _session;
         #endregion
 
-        #region Properties
+        #region Remove
+        public CommonTableViewModel DataViewModel { get; } = new CommonTableViewModel();
+        #endregion
+
+        #region Bindable Properties
         public Session Session => _session;
+        public string SessionID => _session.SessionID;
         #endregion
 
         #region Constructors

@@ -16,21 +16,13 @@ using System.Windows.Shapes;
 namespace Darkness.UI.View
 {
     /// <summary>
-    /// Interaction logic for MainContent.xaml
+    /// Interaction logic for DockableWindow.xaml
     /// </summary>
-    public partial class MainContent : UserControl
+    public partial class DockableWindow : UserControl
     {
-        public MainContent()
+        public DockableWindow()
         {
             InitializeComponent();
-            InjectDefaultWorkspace();
-        }
-
-        private void InjectDefaultWorkspace()
-        {
-            var workspace = new Workspace(true);
-            Grid.SetRow(workspace, 1);
-            MainContentGrid.Children.Add(workspace);
         }
     }
 }

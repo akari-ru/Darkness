@@ -2,10 +2,36 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Darkness.Skins">
     
-    <!-- Colors -->
+    <!-- * Colors * -->
     <Color x:Key="WindowBackgroundColor">#202424</Color>
     
-    <!-- Brushes -->
+    <!-- Button Colors -->
+    <Color x:Key="Button_Normal_Background_Color">#202424</Color>
+    <Color x:Key="Button_MouseOver_Background_Color">#808a8a</Color>
+    <Color x:Key="Button_Pressed_Background_Color">#202424</Color>
+    <Color x:Key="Button_Normal_BorderBrush_Color">#202424</Color>
+    <Color x:Key="Button_MouseOver_BorderBrush_Color">#00ff00</Color>
+    <Color x:Key="Button_Pressed_BorderBrush_Color">#202424</Color>
+    
+    <!-- Window Caption Button Colors -->
+    <Color x:Key="WindowCaptionButton_Normal_BorderBrush_Color">    #202424 </Color>
+    <Color x:Key="WindowCaptionButton_MouseOver_BorderBrush_Color"> #00ff00 </Color>
+    <Color x:Key="WindowCaptionButton_Pressed_BorderBrush_Color">   #202424 </Color>
+    
+    <!-- * Brushes * -->
     <SolidColorBrush x:Key="WindowBackgroud" Color="{StaticResource WindowBackgroundColor}" />
+
+    <!-- Button Brushes-->
+    <SolidColorBrush x:Key="Button_Normal_Background" Color="{StaticResource Button_Normal_Background_Color}" />
+    <SolidColorBrush x:Key="Button_MouseOver_Background" Color="{StaticResource Button_MouseOver_Background_Color}" />
+    <SolidColorBrush x:Key="Button_Pressed_Background" Color="{StaticResource Button_Pressed_Background_Color}" />
+    <SolidColorBrush x:Key="Button_Normal_BorderBrush" Color="{StaticResource Button_Normal_BorderBrush_Color}" />
+    <SolidColorBrush x:Key="Button_MouseOver_BorderBrush" Color="{StaticResource Button_MouseOver_BorderBrush_Color}" />
+    <SolidColorBrush x:Key="Button_Pressed_BorderBrush" Color="{StaticResource Button_Pressed_BorderBrush_Color}" />
+
+    <!-- Window Caption Button Brushes-->
+    <SolidColorBrush x:Key="WindowCaptionButton_Normal_BorderBrush" Color="{StaticResource WindowCaptionButton_Normal_BorderBrush_Color}" />
+    <SolidColorBrush x:Key="WindowCaptionButton_MouseOver_BorderBrush" Color="{StaticResource WindowCaptionButton_MouseOver_BorderBrush_Color}" />
+    <SolidColorBrush x:Key="WindowCaptionButton_Pressed_BorderBrush" Color="{StaticResource WindowCaptionButton_Pressed_BorderBrush_Color}" />
 
 </ResourceDictionary>

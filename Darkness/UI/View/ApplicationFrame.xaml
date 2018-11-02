@@ -5,13 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Darkness.UI.View"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="500" d:DesignWidth="900">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Darkness;component/Skins/DefaultSkin.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Name="AppFrameGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Name="AppFrameCaption" Grid.Row="0" Background="GhostWhite">
+        <Grid Name="AppFrameCaptionPanel" Grid.Row="0" Background="GhostWhite">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -24,13 +31,51 @@
                     <MenuItem Command="SaveAs" />
                     <MenuItem Header="_SaveAll" />
                 </MenuItem>
-                <MenuItem Header="_Édit">
+                <MenuItem Header="_Edit">
                     <MenuItem Command="Cut" />
                     <MenuItem Command="Copy" />
                     <MenuItem Command="Paste" />
                 </MenuItem>
             </Menu>
         </Grid>
-        <DockPanel Grid.Row="1" Background="Azure" />
+        <DockPanel Name="AppFrameContentPanel" Grid.Row="1">
+            <DockPanel Name="SessionInfoPanel" DockPanel.Dock="Top">
+                <Label Foreground="Lime" Content="{Binding SessionID}" />
+            </DockPanel>
+            <Grid Name="ContentPanel" DockPanel.Dock="Bottom" AllowDrop="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0" Background="Azure" DataContext="{Binding DataViewModel}">
+                    <local:TableView ItemsSource="{Binding Data}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" />
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </local:TableView>
+                </DockPanel>
+                <GridSplitter Grid.Column="1" Width="3" SnapsToDevicePixels="True" VerticalAlignment="Stretch" HorizontalAlignment="Left" ResizeBehavior="PreviousAndNext"/>
+                <DockPanel Grid.Column="2" Background="Azure" DataContext="{Binding DataViewModel}">
+                    <ListView ItemsSource="{Binding Data}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.Columns>
+                                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ID}" />
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                                </GridView.Columns>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </UserControl>

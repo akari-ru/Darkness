@@ -12,18 +12,22 @@ namespace Darkness.Model
         /// <summary>
         /// There can only be one Session active per application
         /// </summary>
-        static Session _singleton;
+        private static Session _singleton;
         #endregion
 
         #region Session Meta Fields
-        string _sessionID;
-        DateTime _startDateTime;
-        DateTime _endDateTime;    // Draft - does this make sense ? maybe if we inspect previous sessions ..
-        object _user;           // Draft
+        private string _sessionID = "defaultSession";
+        private DateTime _startDateTime;
+        private DateTime _endDateTime = DateTime.MinValue;      // Draft - does this make sense ? maybe if we inspect previous sessions .. session persistance ..
+        private object _user = null;                            // Draft
         #endregion
 
         #region Fields
-        object _project;        // Draft
+        private object _project = null;                         // Draft
+        #endregion
+
+        #region Properties
+        public string SessionID => _sessionID;
         #endregion
 
         #region Constructors
@@ -33,6 +37,7 @@ namespace Darkness.Model
         private Session()
         {
             _startDateTime = DateTime.Now;
+            Console.WriteLine(ToString());
         }
         #endregion
 
@@ -73,5 +78,17 @@ namespace Darkness.Model
         }
         #endregion
 
+        #region object Overrides
+        public override string ToString()
+        {
+            string ret = _sessionID + "{\n";
+            ret += "\tstart:\t" + _startDateTime.ToLongDateString() + " - " + _startDateTime.ToLongTimeString() + "\n";
+            ret += "\tend:\t" + _endDateTime.ToLongDateString() + " - " + _endDateTime.ToLongTimeString() + "\n";
+            ret += "\tuser:\t" + _user?.ToString() + "\n";
+            ret += "\tproject:\t" + _project?.ToString() + "\n";
+            ret += "}\n";
+            return ret;
+        }
+        #endregion
     }
 }
