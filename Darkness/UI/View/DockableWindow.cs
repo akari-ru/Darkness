@@ -15,14 +15,7 @@ using System.Windows.Shapes;
 
 namespace Darkness.UI.View
 {
-    /// <summary>
-    /// Interaction logic for DockableWindow.xaml
-    /// </summary>
-    public partial class DockableWindow : UserControl
+    class DockableWindow : TabItem
     {
-        public DockableWindow()
-        {
-            InitializeComponent();
-        }
     }
 }

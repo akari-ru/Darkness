@@ -59,8 +59,23 @@
     <Compile Include="DarknessApplication.cs" />
     <Compile Include="DataAccess\FileSystemService.cs" />
     <Compile Include="DataAccess\PrinterService.cs" />
+    <Compile Include="Model\Business.cs" />
+    <Compile Include="Model\CodeGenerator\CodeGenerator.cs" />
+    <Compile Include="Model\CodeGenerator\CodeGeneratorBusiness.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpClass.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpFile.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpMethod.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpObject.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpScope.cs" />
+    <Compile Include="Model\CodeGenerator\CSharp\CSharpStatement.cs" />
+    <Compile Include="Model\DarkModel.cs" />
     <Compile Include="Model\Session.cs" />
     <Compile Include="Model\TreeGraphZone\TreeModel.cs" />
+    <Compile Include="Settings\Window.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Window.settings</DependentUpon>
+    </Compile>
     <Compile Include="UI\ViewModel\ApplicationViewModel.cs" />
     <Compile Include="UI\ViewModel\CommonTableViewModel.cs" />
     <Compile Include="UI\ViewModel\SessionViewModel.cs" />
@@ -71,20 +86,19 @@
     <Compile Include="UI\View\BlendWindow.xaml.cs">
       <DependentUpon>BlendWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\View\DockableWindow.xaml.cs">
-      <DependentUpon>DockableWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\View\DockContainer.xaml.cs">
-      <DependentUpon>DockContainer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UI\View\DocumentDockContainer.xaml.cs">
-      <DependentUpon>DocumentDockContainer.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="UI\View\DockableWindow.cs" />
+    <Compile Include="UI\View\DockContainer.cs" />
+    <Compile Include="UI\View\DockContainerDockHost.cs" />
+    <Compile Include="UI\View\DockHost.cs" />
+    <Compile Include="UI\View\DocumentDockContainer.cs" />
+    <Compile Include="UI\View\HorizontalSplitDockHost.cs" />
     <Compile Include="UI\View\IDockingContract.cs" />
     <Compile Include="UI\View\MainContent.xaml.cs">
       <DependentUpon>MainContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\View\StaticDockContainer.cs" />
     <Compile Include="UI\View\TableView.cs" />
+    <Compile Include="UI\View\VerticalSplitDockHost.cs" />
     <Compile Include="UI\View\Workspace.xaml.cs">
       <DependentUpon>Workspace.xaml</DependentUpon>
     </Compile>
@@ -127,18 +141,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\View\DockableWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\View\DockContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\View\DocumentDockContainer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UI\View\MainContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,11 +172,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Settings\Window.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Window.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Model\Contracts\" />
     <Folder Include="Utils\MVVM\" />
   </ItemGroup>
   <ItemGroup>

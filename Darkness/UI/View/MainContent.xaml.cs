@@ -28,7 +28,7 @@ namespace Darkness.UI.View
 
         private void InjectDefaultWorkspace()
         {
-            var workspace = new Workspace(true);
+            var workspace = new Workspace();
             Grid.SetRow(workspace, 1);
             MainContentGrid.Children.Add(workspace);
         }

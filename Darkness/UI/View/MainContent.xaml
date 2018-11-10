@@ -16,6 +16,5 @@
             <Label Name="WindowTitle" DockPanel.Dock="Left" FontSize="27" FontWeight="Heavy" Content="Darkness" />
         </DockPanel>
         <!--<local:ApplicationFrame x:Name="WindowContentFrame" Grid.Row="1" DataContext="{Binding SessionViewModel}"/>-->
-        <!--<local:Workspace Grid.Row="1" />-->
     </Grid>
 </UserControl>

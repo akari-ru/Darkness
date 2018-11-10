@@ -1,28 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Darkness.UI.View
 {
-    /// <summary>
-    /// Interaction logic for DockContainer.xaml
-    /// </summary>
-    public partial class DockContainer : TabControl
+    public abstract class DockContainer : TabControl
     {
         public DockContainer()
         {
-            InitializeComponent();
+            var items = Items;
+            foreach (var item in Items)
+            {
+                Debug.WriteLine("Test Debug.WriteLine()");
+            }
         }
 
         #region UIElement Drag and Drop Overrides
@@ -46,8 +41,6 @@ namespace Darkness.UI.View
         {
             base.OnDrop(e);
         }
-
         #endregion
-
     }
 }

@@ -73,10 +73,34 @@ namespace Darkness
         }
         #endregion
 
+        #region Window Services
+        public Window RequestMainWindow()
+        {
+            var newWindow = new MainWindow();
+            var windwoSettigns = Settings.Window.Default;
+            newWindow.Top = windwoSettigns.Top;
+            newWindow.Left = windwoSettigns.Left;
+            newWindow.Width = windwoSettigns.Width;
+            newWindow.Height = windwoSettigns.Height;
+            newWindow.Closing += (sender, e) =>
+            {
+                var w_settings = Settings.Window.Default;
+                var w = sender as Window;
+                if (w == null) throw new Exception();
+                w_settings.Top = w.Top;
+                w_settings.Left = w.Left;
+                w_settings.Width = w.Width;
+                w_settings.Height = w.Height;
+                w_settings.Save();
+            };
+            return newWindow;
+        }
+        #endregion
+
         #region App Events
         public void Application_Startup(object sender, StartupEventArgs e)
         {
-            _mainWindow = new MainWindow(); // new Darkness.UI.View.BlendWindow();
+            _mainWindow = RequestMainWindow(); // new Darkness.UI.View.BlendWindow();
             _mainContent = _mainContent ?? (_fetchMainContent() ?? throw new Exception("No valid MainContent provided"));
             _mainWindow.DataContext = this;
             _mainWindow.Show();

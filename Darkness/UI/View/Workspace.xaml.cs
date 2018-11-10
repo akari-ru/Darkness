@@ -20,85 +20,27 @@ namespace Darkness.UI.View
     /// </summary>
     public partial class Workspace : Grid
     {
-        DockableWindow _singleDockableWindow;
+        DockHost _dockHost;
 
         public Workspace()
         {
             InitializeComponent();
-            this.Background = Brushes.Lime;
+            Background = Brushes.LightBlue;
+            _dockHost = new DockContainerDockHost(new StaticDockContainer());
+            Children.Add(_dockHost);
         }
 
-        // this one is to test..
-        public Workspace(bool split)
-        {
-            InitializeComponent();
-            if (split)
-                VerticalWorkspaceSplit();
-        }
 
+        // Not part of the workspace anymore
         #region Workspace Functionality
         private void VerticalWorkspaceSplit()
         {
-            var workspace1 = new Workspace(false);
-            var workspace2 = new Workspace(false);
-            var gridSplitter = new GridSplitter();
-
-            workspace1.Background = Brushes.Aqua;
-            workspace2.Background = Brushes.CadetBlue;
-            gridSplitter.Background = Brushes.Transparent;
-
-            gridSplitter.Width = 4;
-            gridSplitter.Margin = new Thickness(-2, 0, 0, 0);
-            gridSplitter.SnapsToDevicePixels = true;
-            gridSplitter.VerticalAlignment = VerticalAlignment.Stretch;
-            gridSplitter.HorizontalAlignment = HorizontalAlignment.Left;
-            gridSplitter.ResizeBehavior = GridResizeBehavior.PreviousAndCurrent;
-
-            ColumnDefinition column1 = new ColumnDefinition();
-            ColumnDefinition column2 = new ColumnDefinition();
-
-            ColumnDefinitions.Add(column1);
-            ColumnDefinitions.Add(column2);
-
-            SetColumn(workspace1, 0);
-            SetColumn(gridSplitter, 1);
-            SetColumn(workspace2, 1);
-
-            Children.Add(workspace1);
-            Children.Add(workspace2);
-            Children.Add(gridSplitter);
+            
         }
 
         private void HorizontalWorkspaceSplit()
         {
-            var workspace1 = new Workspace(false);
-            var workspace2 = new Workspace(false);
-            var gridSplitter = new GridSplitter();
-
-            workspace1.Background = Brushes.Aqua;
-            workspace2.Background = Brushes.CadetBlue;
-            gridSplitter.Background = Brushes.Transparent;
-
-            gridSplitter.Width = 4;
-            gridSplitter.Margin = new Thickness(0, -2, 0, 0);
-            gridSplitter.SnapsToDevicePixels = true;
-            gridSplitter.VerticalAlignment = VerticalAlignment.Top;
-            gridSplitter.HorizontalAlignment = HorizontalAlignment.Stretch;
-            gridSplitter.ResizeBehavior = GridResizeBehavior.PreviousAndCurrent;
-
-            var row1 = new RowDefinition();
-            var row2 = new RowDefinition();
-
-            RowDefinitions.Add(row1);
-            RowDefinitions.Add(row2);
-
-            SetRow(workspace1, 0);
-            SetRow(gridSplitter, 1);
-            SetRow(workspace2, 1);
-
-            Children.Add(workspace1);
-            Children.Add(workspace2);
-            Children.Add(gridSplitter);
+            
         }
         #endregion
 
